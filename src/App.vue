@@ -150,7 +150,7 @@ export default {
                   
       mounted() 
       {
-        fetch('http://worldtimeapi.org/api/ip')
+        fetch('https://worldtimeapi.org/api/ip')
                 .then(res => {
                     return res.json();
                     })
