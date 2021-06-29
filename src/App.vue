@@ -5,21 +5,12 @@
         <div class="flex items-start gap-6 h-10 lg:w-7/12 w-full ">
           <div class="lg:w-7/12 sm:w-10/12 w-full animate__animated animate__slideInLeft  animate__faster">
             <p class="text-white" v-if="quotesContent"> {{ quotesContent }} </p>
-            <!-- <p class="text-white font-bold italic mt-4" v-if="quotesAuthor">- {{ quotesAuthor }}</p> -->
+            <p class="text-white font-bold italic mt-4" v-if="quotesAuthor">- {{ quotesAuthor }}</p>
           </div>
           <div class="lg:w-3/12 sm:w-5/12 w-2/12">
             <button class="focus:outline-none" @click="refreshQuotes"><img id="refresh-icon" src="./assets/desktop/icon-refresh.svg"/></button>
           </div>
         </div>
-
-         <div v-for="(invoice, index) in invoices" :key="index" class="text-white text-2xl py-4">
-           <h1>{{ invoice.clientEmail }}</h1>
-            <h1 class="col-span-2"><span class="text-sm font-bold">#</span><span class="id-style">{{ invoice.id }}</span></h1>
-                    <h1 class="col-span-2">Due {{invoice.invoiceDate}}</h1>
-                    <h1 class="col-span-3 md:text-center text-right">{{ invoice.clientName }}</h1>
-
-
-         </div>
 
         <div class="pt-80">
           <div class="flex items-center gap-4">
@@ -158,30 +149,21 @@ export default {
                 
     mounted() 
     {
-      // fetch('http://worldtimeapi.org/api/ip')
-      // .then(res => {
-      //     return res.json();
-      //     })
-      // .then(data => {
-      // console.log(data)
-      // this.abbreviation = data.abbreviation
-      // this.currentTimezone = data.timezone
-      // this.timezone = data.timezone
-      // this.dayofyear = data.day_of_year
-      // this.dayofweek = data.day_of_week
-      // this.weekNumber = data.week_number
-      // })
+      fetch('https://worldtimeapi.org/api/ip')
+      .then(res => {
+          return res.json();
+          })
+      .then(data => {
+      console.log(data)
+      this.abbreviation = data.abbreviation
+      this.currentTimezone = data.timezone
+      this.timezone = data.timezone
+      this.dayofyear = data.day_of_year
+      this.dayofweek = data.day_of_week
+      this.weekNumber = data.week_number
+      })
        
-       fetch('./db.json') 
-            .then(res => {
-            return res.json();
-            })
-            .then(data => {
-            console.log(data)
-            this.invoices = data
-            })
-            
-          
+      
       },
   
   
